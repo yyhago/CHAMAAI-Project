@@ -2,6 +2,10 @@
 
 CHAMAAI é uma aplicação web de troca de mensagens em tempo real, desenvolvida com Node.js, TypeScript e React. O projeto oferece uma plataforma segura para comunicação rápida, com funcionalidades de cadastro, login e envio de mensagens.
 
+## Screenshots
+# FIGMA (Protótipov0.1)
+![Primeira Tela](/pictureScreen/image.png)
+
 ## Funcionalidades
 
 * **Cadastro e Login de Usuários:** Sistema de autenticação utilizando JWT para garantir a segurança dos dados dos usuários.
