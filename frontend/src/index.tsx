@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import Signup from './pages/signup/Signup';
 
 import App from './App';
+import './styles/global.css'
 
 
 const root = ReactDOM.createRoot(

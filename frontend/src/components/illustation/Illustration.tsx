@@ -1,9 +1,12 @@
 import React from "react";
 
+const Rocket = require('../../assets/images/rocket_signup.png');
+
+
 const Illustration: React.FC = () => {
   return(
     <div className="illustation">
-      <img src="../../assets/images/rocket_signup.png" alt='illustation signup'/>
+      <img src={Rocket} alt='illustation signup'/>
     </div>
   )
 }

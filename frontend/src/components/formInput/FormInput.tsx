@@ -1,5 +1,7 @@
 import React from "react";
 
+import './Styles.css'
+
 // Interface para os props que o componente vai receber
 interface formInputProps {
   label: string;
