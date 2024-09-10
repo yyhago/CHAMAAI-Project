@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import Signup from './pages/signup/Signup';
+import Login from './pages/login/Login';
 
 import App from './App';
 import './styles/global.css'
@@ -12,7 +13,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Signup />
+    <Login />
   </React.StrictMode>
 );
 
