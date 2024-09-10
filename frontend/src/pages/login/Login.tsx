@@ -6,7 +6,7 @@ import FormInput from "../../components/formInput/FormInput";
 import Illustration from "../../components/illustation/Illustration";
 import SignupButton from "../../components/signupButton/SignupButton";
 
-const Signup: React.FC = () => {
+const Login: React.FC = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -49,4 +49,4 @@ const Signup: React.FC = () => {
   )
 }
 
-export default Signup;
+export default Login;
