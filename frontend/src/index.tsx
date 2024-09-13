@@ -1,12 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
-import Home from './pages/home/Home';
-import Signup from './pages/signup/Signup';
-import Login from './pages/login/Login';
-
 import App from './App';
-import './styles/global.css'
 
 
 const root = ReactDOM.createRoot(
@@ -14,7 +8,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Home />
+    <App />
   </React.StrictMode>
 );
 
