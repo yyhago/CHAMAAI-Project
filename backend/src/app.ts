@@ -17,16 +17,23 @@ const io = new Server(server, {
   }
 });
 
+let connectedClients: Set<string> = new Set();
+
 io.on('connection', (socket) => {
   console.log('A user connected');
+  connectedClients.add(socket.id);
 
   socket.on('message', (message) => {
-    // Emite a mensagem para todos os clientes, exceto o remetente
     socket.broadcast.emit('message', message);
   });
 
   socket.on('disconnect', () => {
     console.log('User disconnected');
+    connectedClients.delete(socket.id);
+
+    if (connectedClients.size === 0) {
+      io.emit('clearChat');
+    }
   });
 });
 
