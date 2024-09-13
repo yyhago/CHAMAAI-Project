@@ -31,6 +31,8 @@
   padding: 15px;
   overflow-y: auto;
   background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
 }
 
 .chat-message {
@@ -44,17 +46,17 @@
 
 .sent {
   background-color: #dcf8c6;
-  align-self: flex-end;
   color: #000;
   border-bottom-right-radius: 0;
+  align-self: flex-end;
 }
 
 .received {
   background-color: #fff;
-  align-self: flex-start;
   border: 1px solid #ddd;
   color: #333;
   border-bottom-left-radius: 0;
+  align-self: flex-start;
 }
 
 .no-messages {
