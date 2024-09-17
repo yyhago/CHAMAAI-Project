@@ -1,43 +1,14 @@
-import express from 'express';
-import http from 'http';
-import { Server } from 'socket.io';
-import cors from 'cors';
+import express from 'express'; // Importa o Express
+import userRoutes from './routes/user.routes'; // Importa as rotas de usuário
 
-const app = express();
-const server = http.createServer(app);
+const app = express(); // Cria uma instância do Express
 
-app.use(cors());
+app.use(express.json()); // Middleware para parsear JSON no corpo da requisição
 
-const io = new Server(server, {
-  cors: {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type"],
-    credentials: true
-  }
-});
+app.use('/api', userRoutes); // Usa as rotas de usuário com o prefixo '/api'
 
-let connectedClients: Set<string> = new Set();
-
-io.on('connection', (socket) => {
-  console.log('A user connected');
-  connectedClients.add(socket.id);
-
-  socket.on('message', (message) => {
-    socket.broadcast.emit('message', message);
-  });
-
-  socket.on('disconnect', () => {
-    console.log('User disconnected');
-    connectedClients.delete(socket.id);
-
-    if (connectedClients.size === 0) {
-      io.emit('clearChat');
-    }
-  });
-});
-
-const PORT = 3002;
-server.listen(PORT, () => {
+// Inicia o servidor na porta 5000
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

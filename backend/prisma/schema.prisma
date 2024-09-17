@@ -1,0 +1,15 @@
+datasource db {
+  provider = "mysql" // Tipo de banco de dados
+  url      = env("DATABASE_URL") // URL de conexão com o banco de dados
+}
+
+generator client {
+  provider = "prisma-client-js" // Gerador do cliente Prisma
+}
+
+// Definição do modelo de usuário
+model User {
+  id        Int     @id @default(autoincrement()) // ID do usuário com valor auto-incrementado
+  email     String  @unique // Email do usuário, deve ser único
+  password  String  // Senha do usuário
+}
