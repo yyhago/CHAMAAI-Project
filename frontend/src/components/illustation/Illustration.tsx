@@ -1,7 +1,5 @@
 import React from "react";
-
 const Rocket = require('../../assets/images/rocket_signup.png');
-
 
 const Illustration: React.FC = () => {
   return(
