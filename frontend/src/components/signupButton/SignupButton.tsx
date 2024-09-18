@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 // Interface para mostrar os props que irão para meu componente
 interface signupButtonProps{
   onClick: () => void; 
