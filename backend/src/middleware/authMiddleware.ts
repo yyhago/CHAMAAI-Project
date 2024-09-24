@@ -1,20 +1,36 @@
 import { Request, Response, NextFunction } from 'express';
-import { User } from '@prisma/client';
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
+
+// Criar interface para o tipo de dados decodificados
+interface DecodedToken extends JwtPayload {
+  userId: number;
+}
 
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
-  const token = req.headers.authorization?.split(' ')[1]; // O token vem no formato "Bearer <token>"
-  
-  if (!token) {
-    return res.status(401).json({ error: "Access denied. No token provided." });
+  const authHeader = req.headers.authorization;
+
+  // Verificar se o cabeçalho Authorization está presente
+  if (!authHeader) {
+    return res.status(401).json({ error: 'Token não fornecido.' });
   }
 
+  // Extrair o token do cabeçalho Authorization
+  const token = authHeader.split(' ')[1];
+
   try {
-    const secretKey = process.env.JWT_SECRET || 'segredoJWT'; // Chave secreta
-    const decoded = jwt.verify(token, secretKey ) as { userId: number };
-    (req as any).user = decoded; // Salvando os dados do usuário no request
+    // Verificar e decodificar o token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as DecodedToken;
+
+    // Verificar expiração do token
+    const currentTime = Math.floor(Date.now() / 1000); // Tempo atual em segundos
+    if (decoded.exp && decoded.exp < currentTime) {
+      return res.status(401).json({ error: 'Token expirado.' });
+    }
+
+    // Salvando os dados do usuário no request
+    req.user = decoded;
     next();
   } catch (error) {
-    res.status(400).json({ error: "Invalid token." });
+    return res.status(401).json({ error: 'Token inválido.' });
   }
 };
