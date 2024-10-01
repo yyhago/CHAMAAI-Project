@@ -83,6 +83,23 @@ export const getUsers = async (req: Request, res: Response) => {
   }
 };
 
+// Função para renovar o Token JWT
+export const refreshToken = (req:  Request, res: Response) => {
+  
+  const user = req.user;
+
+  if(!user){
+    return res.send(401).json({ error: 'User not authentication'})
+  }
+
+  // Gera um novo token com o mesmo payload
+  const newToken = jwt.sign({ userId: user.userId }, process.env.JWT_SECRET as string, {
+    expiresIn: '1h',
+  });
+
+  res.json({ token: newToken });
+  
+}
 
 export const getProtectedData = (req: Request, res: Response) => {
   // Verificar se req.user existe antes de acessá-lo
