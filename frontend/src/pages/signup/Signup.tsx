@@ -1,25 +1,32 @@
-import React, {useState} from "react";
-import './Styles.css'
+// src/pages/signup/Signup.tsx
+
+import React, { useState } from "react";
+import './Styles.css';
 
 import FormInput from "../../components/formInput/FormInput";
 import Illustration from "../../components/illustation/Illustration";
 import SignupButton from "../../components/signupButton/SignupButton";
+import { createUser } from "../../services/apiService"; // Importe a função de criar usuário do apiService
 
 const Signup: React.FC = () => {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  const handleSignup = () => {
-    console.log('Cadastrando: ', {username, email, password})
+  const handleSignup = async () => {
+    try {
+      const response = await createUser(username, email, password); // Chama a função de criar usuário
+      console.log('Usuário cadastrado com sucesso:', response.data);
+      window.location.href = '/login'; // Redireciona para a página de Login após o cadastro
+    } catch (error) {
+      console.error('Erro ao cadastrar usuário:', error);
+    }
   }
 
-  return(
+  return (
     <div className="signup-page">
-
       <div className="left-section">
-        <Illustration /> {/*Illustração*/}
+        <Illustration /> {/* Ilustração */}
       </div>
 
       <div className="right-section">
@@ -47,11 +54,12 @@ const Signup: React.FC = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <SignupButton text="Cadastrar!" onClick={handleSignup}/>
+        <SignupButton text="Cadastrar!" onClick={handleSignup} /> {/* Chama a função handleSignup */}
         
-        <p className="footer">Já possuo conta, quero logar!</p>
+        <p className="footer">
+          <span onClick={() => window.location.href = '/login'} style={{ cursor: 'pointer', color: 'blue' }}>Já tenho conta!</span>
+        </p>
       </div>
-
     </div>
   )
 }
