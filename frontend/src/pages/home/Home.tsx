@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { io, Socket } from 'socket.io-client';
-import './Styles.css'
+import NotificationPopup from '../../components/NotificationPopup/NotificationPopup';
+import './Styles.css';
 
 interface Message {
   text: string;
@@ -13,6 +14,7 @@ const Home: React.FC = () => {
   const [socketId, setSocketId] = useState<string>('');
   const [onlineUsers, setOnlineUsers] = useState<number>(0);
   const [socket, setSocket] = useState<Socket | null>(null);
+  const [notifications, setNotifications] = useState<string[]>([]);
 
   useEffect(() => {
     const newSocket: Socket = io('http://localhost:5000');
@@ -21,6 +23,7 @@ const Home: React.FC = () => {
       if (newSocket.id) {
         setSocketId(newSocket.id);
         console.log('Conectado com ID:', newSocket.id);
+        setNotifications((prev) => [...prev, 'Você está online!']); 
       }
     });
 
@@ -33,6 +36,10 @@ const Home: React.FC = () => {
       if (message && typeof message === 'object' && 'text' in message && 'senderId' in message) {
         setMessages((prevMessages) => [...prevMessages, message]);
       }
+    });
+
+    newSocket.on('disconnect', () => {
+      setNotifications((prev) => [...prev, 'Você se desconectou!']); 
     });
 
     setSocket(newSocket);
@@ -55,8 +62,14 @@ const Home: React.FC = () => {
     }
   };
 
+  // Função para remover a notificação
+  const removeNotification = (index: number) => {
+    setNotifications((prev) => prev.filter((_, i) => i !== index));
+  };
+
   return (
     <div className="chat-wrapper">
+      <NotificationPopup notifications={notifications} removeNotification={removeNotification} />
       <div className="chat-container">
         <div className="chat-header">
           Chat em Tempo Real - Usuários Online: {onlineUsers}
