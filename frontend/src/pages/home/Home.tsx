@@ -51,7 +51,6 @@ const Home: React.FC = () => {
 
       console.log('Enviando mensagem:', newMessage);
       socket.emit('sendMessage', newMessage);
-      // Removida a linha que adicionava a mensagem localmente
       setMessage('');
     }
   };

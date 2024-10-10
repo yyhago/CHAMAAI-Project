@@ -37,8 +37,6 @@ io.on('connection', (socket) => {
 
   socket.on('sendMessage', (message: Message) => {
     console.log('Mensagem recebida:', message); // Para debug
-    
-    // Garantir que a mensagem está no formato correto
     const messageData: Message = {
       text: message.text,
       senderId: message.senderId
