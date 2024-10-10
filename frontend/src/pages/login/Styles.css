@@ -1,9 +1,9 @@
 .signup-page {
   display: flex;
-  position: absolute;  
-  top: 50%;  
-  left: 50%;  
-  transform: translate(-50%, -50%);  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .left-section {
@@ -53,13 +53,35 @@ p:last-child {
   font-size: 0.9em;
 }
 
-.footer{
+.footer {
   text-align: end;
   color: var(--accent-color);
 }
 
-.footer:hover{
+.footer:hover {
   cursor: pointer;
   text-align: end;
-  color:rgb(203, 26, 183);
+  color: rgb(203, 26, 183);
+}
+
+
+@media (max-width: 1200px){
+  .left-section{
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .right-section {
+    width: 90%;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  button {
+    font-size: 0.9em;
+  }
 }

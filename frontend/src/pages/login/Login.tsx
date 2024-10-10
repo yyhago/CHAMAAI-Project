@@ -1,5 +1,3 @@
-// src/pages/login/Login.tsx
-
 import React, { useState } from "react";
 import './Styles.css';
 
@@ -49,7 +47,7 @@ const Login: React.FC = () => {
         <SignupButton text="Realizar Login!" onClick={handleLogin} /> {/* Chama a função handleLogin */}
         
         <p className="footer">
-          <span onClick={() => window.location.href = '/signup'} style={{ cursor: 'pointer', color: 'blue' }}>Não tenho conta ainda!</span>
+          <span onClick={() => window.location.href = '/signup'} style={{ cursor: 'pointer', color: 'pink' }}>Não tenho conta ainda!</span>
         </p>
       </div>
     </div>

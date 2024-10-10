@@ -6,6 +6,11 @@ CHAMAAI é uma aplicação web de troca de mensagens em tempo real, desenvolvida
 # FIGMA (Protótipov0.1)
 ![Primeira Tela](/pictureScreen/image.png)
 
+# PROJETO FINAL
+![Login](/pictureScreen/image1.png)
+![Cadastro](/pictureScreen/image2.png)
+![Home](/pictureScreen/image3.png)
+
 ## Funcionalidades
 
 * **Cadastro e Login de Usuários:** Sistema de autenticação utilizando JWT para garantir a segurança dos dados dos usuários.

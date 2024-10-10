@@ -1,5 +1,3 @@
-// src/pages/signup/Signup.tsx
-
 import React, { useState } from "react";
 import './Styles.css';
 
@@ -57,7 +55,7 @@ const Signup: React.FC = () => {
         <SignupButton text="Cadastrar!" onClick={handleSignup} /> {/* Chama a função handleSignup */}
         
         <p className="footer">
-          <span onClick={() => window.location.href = '/login'} style={{ cursor: 'pointer', color: 'blue' }}>Já tenho conta!</span>
+          <span onClick={() => window.location.href = '/login'} style={{ cursor: 'pointer', color: 'pink' }}>Já tenho conta!</span>
         </p>
       </div>
     </div>
