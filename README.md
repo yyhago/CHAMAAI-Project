@@ -34,21 +34,37 @@ CHAMAAI é uma aplicação web de troca de mensagens em tempo real, desenvolvida
 ## Estrutura do Projeto
 
 * **Backend:**
-   * `src/`
-      * `controllers/`
-      * `middlewares/`
-      * `models/`
-      * `routes/`
-      * `services/`
-      * `app.ts`
+   * `backend/`
+      * `prisma/`
+      * `src/`
+         * `@types/`
+         * `controllers/`
+         * `middleware/`
+         * `routes/`
+         * `utils/`
+         * `server.ts`
+      * `.gitignore`
+      * `README.md`
+      * `package.json`
+      * `tsconfig.json`
 * **Frontend:**
-   * `src/`
-      * `components/`
-      * `pages/`
-      * `hooks/`
-      * `context/`
-      * `styles/`
-      * `App.tsx`
+   * `frontend/`
+      * `public/`
+      * `src/`
+         * `assets/`
+            * `images/`
+         * `components/`
+         * `pages/`
+         * `services/`
+         * `styles/`
+         * `App.tsx`
+         * `index.tsx`
+      * `.gitignore`
+      * `README.md`
+      * `package-lock.json`
+      * `package.json`
+      * `tsconfig.json`
+
 
 ## Como Rodar o Projeto
 
